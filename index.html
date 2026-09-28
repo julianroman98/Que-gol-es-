@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101b16">
+  <meta name="description" content="Adivina al futbolista, su equipo, el rival y el año del gol.">
+  <title>¿Qué Gol Es? | Trivia de fútbol</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="contenedor-header">
+    <a class="tarjeta-logo" href="#inicio" aria-label="¿Qué Gol Es? Inicio">
+      <img src="Logo.jpg" alt="¿Qué Gol Es?">
+    </a>
+  </header>
+
+  <main id="contenedor-landing" class="contenedor-principal">
+    <section class="portada" id="inicio">
+      <p class="eyebrow">TRIVIA PARA FANÁTICOS</p>
+      <h1>¿Qué gol es?</h1>
+      <p>Reconocé al jugador, elegí su equipo, descubrí el rival y acertá el año.</p>
+    </section>
+    <section class="contenedor-categorias" aria-label="Elegí una categoría">
+      <button class="tarjeta-categoria" type="button" data-categoria="Liga Argentina">
+        <span class="categoria-numero">01</span><h2>Liga Argentina</h2>
+        <img src="LigaArgrntina..png" alt="" loading="lazy"><span class="jugar">Jugar desafío <span aria-hidden="true">→</span></span>
+      </button>
+      <button class="tarjeta-categoria" type="button" data-categoria="Premier League">
+        <span class="categoria-numero">02</span><h2>Premier League</h2>
+        <img src="PremierLeague..webp" alt="" loading="lazy"><span class="jugar">Jugar desafío <span aria-hidden="true">→</span></span>
+      </button>
+      <button class="tarjeta-categoria" type="button" data-categoria="LaLiga">
+        <span class="categoria-numero">03</span><h2>LaLiga</h2>
+        <img src="Liga Española.webp" alt="" loading="lazy"><span class="jugar">Jugar desafío <span aria-hidden="true">→</span></span>
+      </button>
+      <button class="tarjeta-categoria" type="button" data-categoria="Bundesliga">
+        <span class="categoria-numero">04</span><h2>Bundesliga</h2>
+        <img src="Bundes.webp" alt="" loading="lazy"><span class="jugar">Jugar desafío <span aria-hidden="true">→</span></span>
+      </button>
+      <button class="tarjeta-categoria" type="button" data-categoria="Mundial">
+        <span class="categoria-numero">05</span><h2>Mundial</h2>
+        <img src="Mundial.webp" alt="" loading="lazy"><span class="jugar">Jugar desafío <span aria-hidden="true">→</span></span>
+      </button>
+      <button class="tarjeta-categoria" type="button" data-categoria="Libertadores">
+        <span class="categoria-numero">06</span><h2>Libertadores</h2>
+        <img src="Libertadores.webp" alt="" loading="lazy"><span class="jugar">Jugar desafío <span aria-hidden="true">→</span></span>
+      </button>
+    </section>
+  </main>
+
+  <main id="pantalla-juego" class="pantalla-juego oculto" aria-live="polite">
+    <div class="juego-header">
+      <span id="categoria-titulo" class="badge-categoria">Categoría</span>
+      <button id="btn-volver" class="btn-volver" type="button">← Categorías</button>
+    </div>
+    <section class="tarjeta-juego">
+      <div class="barra-nivel"><span id="progreso-texto">Pregunta 1 de 4</span><span id="marcador">0 puntos</span></div>
+      <div class="contenedor-imagen"><img id="imagen-jugador" src="" alt="Festejo de un gol"></div>
+      <h2 id="consigna-nivel">¿Quién es este jugador?</h2>
+      <form id="form-nivel-texto" class="form-respuesta">
+        <label class="sr-only" for="input-nombre">Nombre del jugador</label>
+        <input type="text" id="input-nombre" placeholder="Escribí el nombre del jugador…" autocomplete="off" required>
+        <button type="submit" class="btn-enviar">Responder</button>
+      </form>
+      <div id="contenedor-opciones" class="opciones-grid oculto" role="group" aria-label="Opciones de respuesta"></div>
+      <div id="mensaje-feedback" class="feedback oculto" role="status"></div>
+      <section id="contenedor-resultados" class="resultados-contenedor oculto" aria-labelledby="titulo-resultados">
+        <p class="eyebrow">DESAFÍO COMPLETADO</p>
+        <h2 id="titulo-resultados">¡Buen partido!</h2>
+        <p id="puntaje-final" class="puntaje-final">0 de 4 puntos</p>
+        <div class="grafico-percentil-card">
+          <h3>Tu resultado</h3>
+          <div id="porcentaje-destacado" class="porcentaje-destacado">100%</div>
+          <p id="texto-percentil"></p>
+          <div class="barra-progreso-bg" role="img" aria-label="Porcentaje estimado de jugadores que alcanzan este puntaje o más">
+            <div id="barra-progreso-fill" class="barra-progreso-fill"></div>
+          </div>
+          <p class="nota-estimada">Comparación orientativa: todavía no hay partidas registradas para calcular estadísticas reales.</p>
+        </div>
+        <button id="btn-reiniciar-menu" class="btn-enviar" type="button">Elegir otra categoría</button>
+      </section>
+    </section>
+  </main>
+
+  <div id="modal-instrucciones" class="overlay-modal" role="dialog" aria-modal="true" aria-labelledby="titulo-modal">
+    <div class="tarjeta-modal">
+      <button id="btn-Cerrar" class="btn-Cerrar" type="button" aria-label="Cerrar">×</button>
+      <p class="eyebrow">BIENVENIDO A LA CANCHA</p>
+      <h2 id="titulo-modal">¿Qué Gol Es?</h2>
+      <p class="subtitulo-modal">Demostrá cuánto sabés de fútbol.</p>
+      <ol class="lista-instrucciones">
+        <li>Adiviná quién aparece en la imagen.</li>
+        <li>Elegí el equipo, el rival y el año del gol.</li>
+        <li>Cada acierto suma un punto. Cuatro puntos es el máximo.</li>
+      </ol>
+      <button id="btn-Entendido" class="btn-Entendido" type="button">¡A jugar!</button>
+    </div>
+  </div>
+</body>
+</html>
